@@ -1,0 +1,17 @@
+{
+  "name": "postgres",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "seed": "psql -d pokemonworld -a -f ./pokemon.sql"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.2",
+    "pg": "^7.17.1"
+  },
+  "description": ""
+}
