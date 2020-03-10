@@ -1,7 +1,7 @@
-const pg = require('pg');
-const postgresUrl = 'postgres://localhost/pokemonworld';
+const { Client } = require('pg'); // same as `const Client = require('pg').Client`
+const postgresUrl = 'postgres://localhost/brooklyn_restaurants';
 
-const client = new pg.Client(postgresUrl);
+const client = new Client(postgresUrl);
 
 const connector = async () => {
   try {
@@ -13,17 +13,21 @@ const connector = async () => {
 };
 connector();
 
-const grabPokemon = async () => {
+const fetchRestaurants = async () => {
   try {
-    const data = await client.query(`SELECT * FROM pokemon;`);
-    console.log(data);
-    // console.log(data.rows)
-    data.rows.forEach(row => {
-      console.log(row);
-    });
+    const data = await client.query(`SELECT * FROM restaurants;`);
+    // console.log('\n data --> ', data, '\n');
+    console.log('\n data.rows --> ', data.rows, '\n');
+    // data.rows.forEach(row => {
+    //   console.log(row);
+    // });
+    data.rows.forEach(restaurant => {
+      const { id, name, category, neighborhood } = restaurant
+      console.log(`${id}. ${name} serves the best ${category} in ${neighborhood}.`)
+    })
   } catch (error) {
     console.log('Error: ', error);
   }
 };
 
-grabPokemon();
+fetchRestaurants();
