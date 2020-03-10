@@ -1,4 +1,4 @@
-### Steps
+### Steps to Set Up
 
 **Create database**
 - Options:
@@ -7,3 +7,5 @@
     - PostgreSQL documentation: [CREATE DATABASE](https://www.postgresql.org/docs/9.0/sql-createdatabase.html)
   - Using a GUI like Postico. Interfaces vary, but it should be user-friendly enough as to click a `+Database` button and type in the database name, `brooklyn_restaurants`.
 
+**Run seed**
+- `npm run seed` in your terminal.
