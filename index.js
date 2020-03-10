@@ -18,7 +18,11 @@ const fetchRestaurants = async () => {
 
   // Query for restaurants
   try {
-    const data = await client.query(`SELECT * FROM restaurants;`);
+    const data = await client.query(`
+      SELECT * FROM restaurants
+        WHERE neighborhood = 'Williamsburg' OR
+              category = 'Italian'
+    ;`);
     // What does the data look like?
     console.log('\n data --> ', data, '\n');
 
