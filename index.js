@@ -13,6 +13,18 @@ client
   .then(() => console.log('---- Connected ----'))
   .catch((error) => console.error('---- Connection error ----\n', error.stack))
 
+// Translate to async/await
+// const connector = async () => {
+//   try {
+//     await client.connect()
+//     console.log('---- Connected ----')
+//   } catch(err) {
+//     console.error('---- Connection error ----\n', err.stack)
+//   }
+// }
+
+// connector()
+
 // Write function to fetch restaurants from database
 const fetchRestaurants = async () => {
 
@@ -38,16 +50,28 @@ const fetchRestaurants = async () => {
 
   // Catch any errors that may occur from the query
   catch (error) {
-    console.log('---- fetchRestaurants error ----\n', error);
+    console.error('---- fetchRestaurants error ----\n', error);
   }
 
   // Regardless of success/failure, close the connection (see documentation)
-  finally {
-    client
-      .end()
-      .then(() => console.log('\n---- Disconnected ----\n'))
-      .catch(err => console.error('---- Error during disconnection ----\n', err.stack))
-  }
-};
+  client
+    .end()
+    .then(() => console.log('\n---- Disconnected ----\n'))
+    .catch(err => console.error('---- Error during disconnection ----\n', err.stack))
+
+  // Use async/await version from below
+  // disconnector()
+
+}
 
 fetchRestaurants()
+
+// Translate to async/await
+// const disconnector = async () => {
+//   try {
+//     await client.end()
+//     console.log('\n---- Disconnected ----\n')
+//   } catch(err) {
+//     console.error('---- Error during disconnection ----\n', err.stack)
+//   }
+// }
