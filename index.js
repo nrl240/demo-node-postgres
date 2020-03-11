@@ -11,7 +11,7 @@ const client = new Client(postgresUrl);
 client
   .connect()
   .then(() => console.log('---- Connected ----'))
-  .catch((error) => console.error('---- Connection error ----\n', error.stack))
+  .catch((err) => console.error('---- Connection error ----\n', err.stack))
 
 // Translate to async/await
 // const connector = async () => {
@@ -49,8 +49,8 @@ const fetchRestaurants = async () => {
   }
 
   // Catch any errors that may occur from the query
-  catch (error) {
-    console.error('---- fetchRestaurants error ----\n', error);
+  catch (err) {
+    console.error('---- fetchRestaurants error ----\n', err);
   }
 
   // Regardless of success/failure, close the connection (see documentation)
