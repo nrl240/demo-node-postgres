@@ -1,20 +1,57 @@
-DROP TABLE IF EXISTS restaurants;
+DROP TABLE IF EXISTS restaurants,
+boroughs,
+neighborhoods;
 
-CREATE TABLE restaurants (
-  id integer PRIMARY KEY,
-  name character varying(100) NOT NULL,
-  category character varying(100) NOT NULL,
-  neighborhood character varying(200) NOT NULL
+CREATE TABLE boroughs (
+  id SERIAL PRIMARY KEY,
+  name character varying(100) NOT NULL
 );
 
-INSERT INTO restaurants (id, name, category, neighborhood) VALUES
-  (1, 'Olea', 'Mediterranean', 'Fort Greene'),
-  (2, 'Claro', 'Mexican', 'Gowanus'),
-  (3, 'Misi', 'Italian', 'Williamsburg'),
-  (4, 'El Born', 'Catalan', 'Greenpoint'),
-  (5, 'Union Pizza Works', 'Pizza', 'Bushwick'),
-  (6, 'Santa Panza', 'Pizza', 'Bushwick'),
-  (7, 'Lighthouse', 'American', 'Williamsburg'),
-  (8, 'Runner & Stone', 'American', 'Gowanus'),
-  (9, 'al di la Trattoria', 'Italian', 'Park Slope'),
-  (10, 'Stone Park Inn', 'American', 'Park Slope');
+CREATE TABLE neighborhoods (
+  id SERIAL PRIMARY KEY,
+  name character varying(100) NOT NULL,
+  borough_id INTEGER,
+  FOREIGN KEY (borough_id) REFERENCES boroughs (id)
+);
+
+CREATE TABLE restaurants (
+  id SERIAL PRIMARY KEY,
+  name character varying(100) NOT NULL,
+  category character varying(100) NOT NULL,
+  neighborhood_id INTEGER,
+  FOREIGN KEY (neighborhood_id) REFERENCES neighborhoods (id)
+);
+
+INSERT INTO boroughs (id, name)
+VALUES (1, 'Brooklyn'),
+  (2, 'Bronx'),
+  (3, 'Manhattan'),
+  (4, 'Staten Island'),
+  (5, 'Queens');
+
+INSERT INTO neighborhoods (id, name, borough_id)
+VALUES (1, 'Fort Green', 1),
+  (2, 'Gowanus', 1),
+  (3, 'Williamsburg', 1),
+  (4, 'Greenpoint', 1),
+  (5, 'Bushwick', 1),
+  (6, 'Park Slope', 1),
+  (7, 'Lower East Side', 3),
+  (8, 'Chelsea', 3),
+  (9, 'Meatpacking District', 3),
+  (10, 'West Village', 3);
+
+INSERT INTO restaurants (id, name, category, neighborhood_id)
+VALUES (1, 'Olea', 'Mediterranean', 1),
+  (2, 'Claro', 'Mexican', 2),
+  (3, 'Misi', 'Italian', 3),
+  (4, 'El Born', 'Catalan', 4),
+  (5, 'Union Pizza Works', 'Pizza', 5),
+  (6, 'Santa Panza', 'Pizza', 5),
+  (7, 'Lighthouse', 'American', 3),
+  (8, 'Runner & Stone', 'American', 2),
+  (9, 'al di la Trattoria', 'Italian', 6),
+  (10, 'Stone Park Inn', 'American', 6),
+  (11, 'Brunetti', 'Italian', 10),
+  (12, 'Fig & Olive', 'Mediterranean', 9),
+  (13, 'Malaparte', 'Italian', 10);
