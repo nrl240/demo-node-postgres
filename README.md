@@ -2,6 +2,8 @@
 
 **1. Create database**
 - Options:
+  - Running the command `createdb brooklyn_restaurants` in the terminal.
+    - PostgreSQL documentation: [createdb](https://www.postgresql.org/docs/9.1/app-createdb.html)
   - Using `psql` command line interface, run `CREATE DATABASE brooklyn_restaurants;` then check that it was created successfully by running, `SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('brooklyn_restaurants');`, **OR** by looking at the databases in a GUI like Postico.
     - To exit `psql`, type `\q` and press enter.
     - PostgreSQL documentation: [CREATE DATABASE](https://www.postgresql.org/docs/9.0/sql-createdatabase.html)
