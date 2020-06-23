@@ -9,6 +9,11 @@
 
 **2. Run seed**
 - `npm run seed` in your terminal.
+  - See the `package.json` file to see what this command runs:
+    - `"seed": "psql -d brooklyn_restaurants -a -f ./restaurants.sql"`
+      - `-d [dbname]`: short for `--dbname=dbname`, the database name to connect to
+      - `-a`: short for `--echo-all`, prints all nonempty input lines to std output
+      - `-f [filename]`: short for `--file=filename`, reads commands from the filename
 
 **3. Code away**
 - Go to the `index.js` file and play around with queries.
