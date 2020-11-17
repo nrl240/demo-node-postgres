@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "seed": "psql -d brooklyn_restaurants -a -f ./restaurants.sql"
+    "seed": "psql -d restaurant_directory -a -f ./restaurants.sql"
   },
   "keywords": [],
   "author": "",

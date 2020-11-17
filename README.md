@@ -1,4 +1,4 @@
-### Steps
+## **Setting Up**
 
 **1. Create database**
 - Options:
@@ -9,7 +9,7 @@
     - PostgreSQL documentation: [CREATE DATABASE](https://www.postgresql.org/docs/9.0/sql-createdatabase.html)
   - Using a GUI like Postico. Interfaces vary, but it should be user-friendly enough as to click a `+Database` button and type in the database name, `brooklyn_restaurants`.
 
-**2. Run seed**
+### **2. Run seed**
 - `npm run seed` in your terminal.
   - See the `package.json` file to see what this command runs:
     - `"seed": "psql -d brooklyn_restaurants -a -f ./restaurants.sql"`
@@ -17,5 +17,5 @@
       - `-a`: short for `--echo-all`, prints all nonempty input lines to std output
       - `-f [filename]`: short for `--file=filename`, reads commands from the filename
 
-**3. Code away**
-- Go to the `index.js` file and play around with queries.
+### **3. Code away**
+- Go to the `index.js` file and play around with queries using `pg` ([node-postgres](https://node-postgres.com/)).
