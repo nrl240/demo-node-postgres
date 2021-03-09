@@ -18,4 +18,4 @@
       - `-f [filename]`: short for `--file=filename`, reads commands from the filename
 
 ### **3. Code away**
-- Go to the `app.js` file and play around with queries using `pg` ([node-postgres](https://node-postgres.com/)).
+- Go to the `index.js` file and play around with queries using `pg` ([node-postgres](https://node-postgres.com/)).
