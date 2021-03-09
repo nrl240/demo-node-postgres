@@ -52,8 +52,11 @@ app.get('/restaurants/:id', async (req, res, next) => {
 // POST /restaurants
 app.post('/restaurants', async (req, res, next) => {
   try {
-    const text =
-      'INSERT INTO restaurants(name, category) VALUES($1, $2) RETURNING *';
+    const text = `
+      INSERT INTO restaurants(name, category)
+        VALUES($1, $2)
+        RETURNING *;
+    `;
     const values = [req.body.name, req.body.category];
     const data = await client.query(text, values);
     const restaurant = data.rows[0];
