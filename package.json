@@ -2,9 +2,9 @@
   "name": "demo-node-postgres",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon app.js",
     "seed": "psql -d restaurant_directory -a -f ./restaurants.sql"
   },
   "keywords": [],
