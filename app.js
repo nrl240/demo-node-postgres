@@ -27,8 +27,8 @@ const baseQuery = `
 app.get('/restaurants', async (req, res, next) => {
   try {
     const data = await client.query(`${baseQuery};`);
-    const restaurants = data.rows
-    res.json(restaurants)
+    const restaurants = data.rows;
+    res.json(restaurants);
   } catch (error) {
     next(error);
   }
@@ -37,13 +37,16 @@ app.get('/restaurants', async (req, res, next) => {
 // GET /restaurants/:id
 app.get('/restaurants/:id', async (req, res, next) => {
   try {
-    const { id } = req.params
-    const data = await client.query(`
+    const { id } = req.params;
+    const data = await client.query(
+      `
       ${baseQuery}
         WHERE r.id = $1;
-      `, [id]);
-    const restaurant = data.rows[0]
-    res.json(restaurant)
+      `,
+      [id]
+    );
+    const restaurant = data.rows[0];
+    res.json(restaurant);
   } catch (error) {
     next(error);
   }
