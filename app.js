@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const chalk = require('chalk');
-const client = require('./db');
+const client = require('./db'); // 4. Require in the client
 
 const app = express();
 
